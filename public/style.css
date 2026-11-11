@@ -1,0 +1,167 @@
+/* Reset base */
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+
+/* Layout: uma coluna calma que desce como água. Um lótus grande abre a página,
+   um lago clicável é o único momento ousado, o resto fica quieto. */
+:root {
+  /* Paleta Rosa Botânico (fixa nos dois temas) */
+  --ameixa: #6B3F4E;
+  --rosa-antigo: #B87A8C;
+  --rosa-petala: #D8A2B4;
+  --rosa-claro: #F1D6DE;
+  --rosa-nevoa: #FAEEF3;
+  --salvia: #7A8F6A;
+  --matcha: #A9C48F;
+  --creme: #F5E7DA;
+  --toupeira: #A0897C;
+  --carvao: #3A2E2E;
+
+  /* Papéis (tema claro) */
+  --bg: #F5E7DA;
+  --surface: #FAEEF3;
+  --fg: #3A2E2E;
+  --muted: #6f5a55;
+  --heading: #6B3F4E;
+  --line: #e4cfc9;
+  --btn-bg: #6B3F4E;
+  --btn-fg: #FAEEF3;
+  --water-a: #c9dbb4;
+  --water-b: #A9C48F;
+  --pad: #7A8F6A;
+  --ring: #6B3F4E;
+  --petal-stroke: rgba(107, 63, 78, .28);
+
+  --display: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --body: "Figtree", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #2b1f25; --surface: #3a2a32; --fg: #FAEEF3; --muted: #d3b9c1;
+    --heading: #F1D6DE; --line: #523b46; --btn-bg: #F1D6DE; --btn-fg: #3A2E2E;
+    --water-a: #46553f; --water-b: #2f3b2d; --pad: #7A8F6A; --ring: #F1D6DE;
+    --petal-stroke: rgba(58, 46, 46, .35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #2b1f25; --surface: #3a2a32; --fg: #FAEEF3; --muted: #d3b9c1;
+  --heading: #F1D6DE; --line: #523b46; --btn-bg: #F1D6DE; --btn-fg: #3A2E2E;
+  --water-a: #46553f; --water-b: #2f3b2d; --pad: #7A8F6A; --ring: #F1D6DE;
+  --petal-stroke: rgba(58, 46, 46, .35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 4rem;
+}
+.wrap { max-width: 60rem; margin-inline: auto; display: flex; flex-direction: column; gap: clamp(3.5rem, 9vw, 6rem); }
+h1, h2, h3 { font-family: var(--display); color: var(--heading); font-weight: 400; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(1.75rem, 4.5vw, 2.5rem); line-height: 1.15; font-style: italic; }
+h3 { font-size: 1.3rem; line-height: 1.25; font-weight: 600; }
+p { margin: 0; }
+.eyebrow {
+  font-size: .8rem; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--muted);
+}
+.lead { max-width: 34rem; color: var(--muted); }
+section { display: flex; flex-direction: column; gap: 1.25rem; }
+
+/* ---------- Lótus (SVG) ---------- */
+.lotus { display: block; width: 100%; height: auto; overflow: visible; }
+.lotus .pt {
+  transform-origin: 0 0;
+  transform: rotate(var(--a)) scale(var(--s));
+  stroke: var(--petal-stroke); stroke-width: .8;
+  transition: transform var(--dur, 1.2s) ease-in-out;
+}
+.lotus.closed .pt { transform: rotate(calc(var(--a) * .1)) scale(calc(var(--s) * .86)); }
+.lotus .padleaf { fill: var(--pad); }
+@keyframes bloom { from { transform: rotate(calc(var(--a) * .1)) scale(calc(var(--s) * .8)); } }
+.lotus.bloom .pt { animation: bloom 1.8s cubic-bezier(.3, .7, .2, 1) both; }
+
+/* ---------- Abertura ---------- */
+.hero {
+  display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 2rem;
+  padding-block: clamp(2.5rem, 8vw, 5rem) 0;
+}
+.hero-text { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
+.hero h1 { font-size: clamp(3.2rem, 11vw, 6.5rem); line-height: .95; font-style: italic; font-weight: 500; letter-spacing: -.01em; }
+.hero h1 span { display: block; }
+.hero h1 .second { padding-left: .9em; color: var(--rosa-antigo); }
+.hero-flower { position: relative; min-width: 0; }
+.hero-flower .lotus { position: relative; z-index: 1; }
+@keyframes drift { 50% { transform: translateY(-6px); } }
+.hero-flower .lotus { animation: drift 7s ease-in-out infinite; }
+.ripples { position: absolute; left: 50%; bottom: -4%; width: 110%; transform: translateX(-50%); }
+.ripples ellipse { fill: none; stroke: var(--rosa-petala); opacity: .55; }
+
+/* ---------- Carta ---------- */
+.letter {
+  background: var(--surface); border-radius: 1.75rem; padding: clamp(1.5rem, 5vw, 3rem);
+  border: 1px solid var(--line); gap: 1rem;
+}
+.letter p { max-width: 38rem; }
+.letter .sign { font-family: var(--display); font-style: italic; font-size: 1.25rem; color: var(--heading); }
+
+/* ---------- Lago ---------- */
+.pond {
+  position: relative; width: 100%; aspect-ratio: 16 / 9; max-width: 100%;
+  border-radius: 1.75rem; overflow: hidden; cursor: pointer;
+  background: radial-gradient(120% 90% at 50% 0%, var(--water-a), var(--water-b));
+  touch-action: manipulation;
+}
+.pond .lotus { position: absolute; transform: translate(-50%, -82%); pointer-events: none; }
+.pond .ring {
+  position: absolute; width: 14%; aspect-ratio: 3 / 1; border-radius: 50%;
+  border: 2px solid var(--rosa-nevoa); transform: translate(-50%, -50%) scale(.2); opacity: .9;
+  animation: ring 1.4s ease-out forwards; pointer-events: none;
+}
+@keyframes ring { to { transform: translate(-50%, -50%) scale(2.4); opacity: 0; } }
+.pond-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.recado {
+  font-family: var(--display); font-style: italic; font-size: clamp(1.3rem, 3.6vw, 1.8rem); line-height: 1.3;
+  color: var(--heading); min-height: 2.6em; max-width: 36rem; text-wrap: balance;
+}
+.count { color: var(--muted); font-size: .95rem; font-variant-numeric: tabular-nums; }
+
+button {
+  font: inherit; font-weight: 600; cursor: pointer; border: 0; border-radius: 999px;
+  background: var(--btn-bg); color: var(--btn-fg); padding: .8rem 1.5rem;
+}
+button:hover { filter: brightness(1.08); }
+button:focus-visible, .pond:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
+
+/* ---------- O que o lótus sabe ---------- */
+.facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem 3rem; }
+.fact { display: flex; flex-direction: column; gap: .4rem; padding-top: 1rem; border-top: 2px solid var(--rosa-petala); min-width: 0; }
+.fact p { color: var(--muted); }
+.fact .moral { color: var(--fg); font-weight: 500; }
+
+/* ---------- Respirar ---------- */
+.breathe { align-items: center; text-align: center; }
+.breathe .lead { margin-inline: auto; }
+.breath-flower { width: min(20rem, 80%); }
+.breath-label { font-family: var(--display); font-style: italic; font-size: 1.6rem; color: var(--heading); min-height: 1.6em; }
+
+/* ---------- Fecho ---------- */
+.end { text-align: center; align-items: center; gap: .75rem; }
+.end .big { font-family: var(--display); font-style: italic; font-size: clamp(1.6rem, 5vw, 2.4rem); line-height: 1.2; color: var(--heading); max-width: 30rem; text-wrap: balance; }
+.end .lotus { width: 5rem; }
+
+@media (max-width: 640px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-flower { order: -1; width: 82%; margin-inline: auto; }
+  .facts { grid-template-columns: 1fr; }
+  .pond { aspect-ratio: 4 / 5; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lotus.bloom .pt, .hero-flower .lotus, .pond .ring { animation: none; }
+  .pond .ring { display: none; }
+}

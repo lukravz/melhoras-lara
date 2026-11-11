@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Lótus para Lara</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Figtree:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="pg-back" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#D8A2B4"/><stop offset="1" stop-color="#B87A8C"/>
+    </linearGradient>
+    <linearGradient id="pg-mid" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#F1D6DE"/><stop offset="1" stop-color="#D8A2B4"/>
+    </linearGradient>
+    <linearGradient id="pg-front" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#FAEEF3"/><stop offset=".7" stop-color="#F1D6DE"/><stop offset="1" stop-color="#D8A2B4"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">OIEEEE, quero que você fique bem!</p>
+      <h1><span>Lara</span><span class="second">Cristal</span></h1>
+      <p class="lead">Não sei como foi seu dia, ou oque vem passando na sua cabeçinha, mas eu to aqui sempre que você precisar ❤️</p>
+    </div>
+    <div class="hero-flower" aria-hidden="true">
+      <svg class="ripples" viewBox="0 0 220 40">
+        <ellipse cx="110" cy="20" rx="60" ry="7" stroke-width="1.2"/>
+        <ellipse cx="110" cy="20" rx="84" ry="11" stroke-width=".9"/>
+        <ellipse cx="110" cy="20" rx="106" ry="16" stroke-width=".6"/>
+      </svg>
+      <span id="hero-lotus"></span>
+    </div>
+  </header>
+
+  <section class="letter">
+    <p class="eyebrow">Antes de tudo</p>
+    <p>Lara, eu não sei como te confortar, ou fazer você se sentir melhor. Mas eu não quero te ver assim, você é uma das mulheres mais incríveis que eu conheço.</p>
+    <p>O que eu sei é que você não precisa passar por tudo sozinha, porque ver que você ta mal e não ter ninguem pra contar doi muito, e mesmo que eu ja tenha vacilado muito com você eu quero te ajudar com oque eu puder.</p>
+    <p class="sign">Com carinho. -Luquetas</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">O lago da Lara</p>
+    <h2>Toque na água e plante um lótus</h2>
+    <p class="lead">Cada flor que nasce traz um recado para você.</p>
+    <div class="pond" id="pond" tabindex="0" role="button" aria-label="Lago. Toque para plantar um lótus e receber um recado."></div>
+    <div class="pond-foot">
+      <p class="recado" id="recado" aria-live="polite">Você não precisa estar bem hoje. Só precisa estar.</p>
+      <p class="count"><span id="count">5</span> lótus no lago</p>
+    </div>
+  </section>
+
+  <section class="breathe">
+    <p class="eyebrow">Um minuto só seu</p>
+    <h2>Respire com a flor</h2>
+    <p class="lead">Ela abre enquanto você puxa o ar e fecha enquanto você solta. Quatro segundos para dentro, seis para fora.</p>
+    <div class="breath-flower" id="breath-flower" aria-hidden="true"></div>
+    <p class="breath-label" id="breath-label" aria-live="polite">Quando quiser, é só começar.</p>
+    <button type="button" id="breath-btn">Começar</button>
+  </section>
+
+  <footer class="end">
+    <span id="end-lotus" aria-hidden="true"></span>
+    <p class="big">Você é incrivel, Lara. Hoje, amanhã e depois.</p>
+    <p class="lead">Volte aqui sempre que precisar. esse espaço é seu.</p>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
